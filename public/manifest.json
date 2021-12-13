@@ -1,0 +1,20 @@
+{
+  "short_name": "React GUI",
+  "name": "eyeson Web GUI React App",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "icon144.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#9e206c",
+  "background_color": "#404040"
+}

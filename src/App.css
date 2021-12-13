@@ -1,0 +1,27 @@
+.App-sidebar {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+}
+.guest-link {
+  color: blue;
+}
+.preloadPage-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preloadPage-item {
+  margin-top: 2rem;
+}
+.preloadPage-title{
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 839px) {
+  .App-sidebar {
+    flex-flow: row nowrap;
+  }
+}
