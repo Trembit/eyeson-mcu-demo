@@ -6,7 +6,7 @@ import axios from './API/axios'
 import {useHistory} from "react-router-dom";
 import {RoomContext} from "./context";
 
-const PreLoadPage = ({stream}) => {
+const UserPage = ({stream}) => {
     const history = useHistory();
     const {setContext} = useContext(RoomContext);
 
@@ -30,7 +30,7 @@ const PreLoadPage = ({stream}) => {
 
         const response = await axios.post("/rooms", formBody);
         setContext(response.data);
-        history.push(state.roomName);
+        history.push('rooms/' + state.roomName);
     }
 
     function handleInputChange(event) {
@@ -80,4 +80,4 @@ const PreLoadPage = ({stream}) => {
     );
 }
 
-export default PreLoadPage;
+export default UserPage;

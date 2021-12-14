@@ -1,19 +1,19 @@
-import React, {useState}from 'react';
+import React, {useState} from 'react';
 export const RoomContext = React.createContext({})
 
 const RoomProvider = (props) => {
         const [contextData, setContextData] = useState({
-            accessKey: '',
-            guestLink: '',
+            accessKey: undefined,
+            guestLink: undefined,
         });
 
         function setContext(data) {
             setContextData({
                 ...contextData,
                 accessKey: data.access_key,
-                guestLink: data.links.guest_join
+                guestLink: `${window.location.origin}/guest/${data.room.guest_token}`
             });
-        };
+        }
 
         return (
             <RoomContext.Provider

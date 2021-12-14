@@ -1,8 +1,9 @@
 import React from 'react';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import PreLoadPage from "./PreLoadPage";
+import UserPage from "./UserPage";
 import RoomPage from "./RoomPage";
 import RoomProvider from "./context";
+import GuestPage from "./GuestPage";
 
 const App = () => {
   return (
@@ -11,10 +12,13 @@ const App = () => {
       <Switch>
         <RoomProvider>
         <Route path='/' exact>
-          <PreLoadPage/>
+          <UserPage />
         </Route>
-        <Route path='/:roomName'>
-          <RoomPage  />
+        <Route path='/guest/:guestToken'>
+          <GuestPage />
+        </Route>
+        <Route path='/rooms/:roomName'>
+          <RoomPage />
         </Route>
         </RoomProvider>
       </Switch>
