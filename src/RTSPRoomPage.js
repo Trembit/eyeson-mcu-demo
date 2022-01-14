@@ -3789,7 +3789,6 @@ class RTSPRoomPage extends Component {
     state = {
         localStream: null,
         remoteStream: null,
-        janusStream: null,
         connecting: false,
         audio: true,
         video: true,
@@ -4015,10 +4014,8 @@ onmessage = ({ data }) => {
             if (url.startsWith('rtsp://')) {
                 await startRtsp();
             } else if (url.endsWith('.mpd')) {
-                initVideo();
                 initDash(url);
             } else {
-                initVideo();
                 initHLS(url);
             }
         };
@@ -4173,13 +4170,7 @@ onmessage = ({ data }) => {
                 return firstValueFrom(
                     janusLibInstance.streams$.pipe(
                         map((remoteStream) => {
-                            console.log('##################');
-                            console.log(remoteStream);
-                            this.setState({
-                                janusStream: remoteStream,
-                            });
-                            // _stream = new MediaStream();
-                            // _stream.addTrack(remoteStream.getVideoTracks()[0]);
+                            _video.srcObject = remoteStream;
                         }))
                 );
             } catch (err) {
@@ -4273,6 +4264,7 @@ onmessage = ({ data }) => {
             eyeson.start(contextData.accessKey, { stream: _stream });
         };
 
+        initVideo();
         startStream(rtspLink).then(() => {
             startMeeting();
         });
@@ -4290,15 +4282,12 @@ onmessage = ({ data }) => {
     };
 
     render() {
-        const { connecting, remoteStream, janusStream } = this.state;
+        const { connecting, remoteStream } = this.state;
         const {contextData} = this.context;
 
         return (
             <ThemeProvider options={{primary: '#9e206c', secondary: '#6d6d6d'}}>
                 <Grid className="App">
-                    <GridCell>
-                        {janusStream && <Video stream={janusStream} style={{width: '200px'}}/>}
-                    </GridCell>
                     <GridCell
                         span="12">Link for Guests:
                         <span className="guest-link"> {contextData.guestLink}</span>
