@@ -147,6 +147,10 @@ class RoomPage extends Component {
                         span="12">Link for Guests:
                         <span className="guest-link"> {contextData.guestLink}</span>
                     </GridCell>
+                    <GridCell
+                        span="12">Link for RTSP/HLS streamer:
+                        <span className="guest-link"> {contextData.rtspLink}</span>
+                    </GridCell>
                     <GridCell span="12">
                         {connecting && <LinearProgress />}
                         {remoteStream && <Video stream={remoteStream} style={{width: '200px'}}/>}
